@@ -19,11 +19,12 @@ background:#000;
 overflow:hidden;
 }
 
+/* BACKGROUND */
 body{
 background:radial-gradient(circle at center,#020408 0%,#000 70%);
 }
 
-/* subtle background */
+/* subtle background glow */
 body::before{
 content:"";
 position:absolute;
@@ -32,7 +33,7 @@ background:radial-gradient(circle at center,rgba(40,70,140,0.15),transparent 45%
 z-index:0;
 }
 
-/* snow */
+/* SNOW */
 canvas{
 position:fixed;
 inset:0;
@@ -94,13 +95,13 @@ justify-content:center;
 cursor:pointer;
 transition:0.2s ease;
 
-border:2px solid transparent;
+border:3px solid transparent;
 }
 
-/* SIMPLE HOVER */
+/* HOVER (THICK OUTLINE) */
 .game:hover{
 transform:scale(1.05);
-border:2px solid #4f8df0;
+border:3px solid #4f8df0;
 }
 
 /* ICON */
@@ -123,7 +124,7 @@ pointer-events:none;
 
 <!-- STICKMAN HOOK -->
 <div class="game" onclick="window.location.href='games/stickman-hook.html'">
-  <img src="assets/stickman-hook.png">
+  <img src="icons/stickman-hook.png">
 </div>
 
 </div>
