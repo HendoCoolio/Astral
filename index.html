@@ -141,7 +141,6 @@ box-shadow:
 <div class="top-bar-wrap">
   <div class="top-bar">
 
-    <!-- ONLY BUTTON -->
     <button class="top-icon-btn" onclick="window.location.href='games.html'">
       <svg viewBox="0 0 24 24">
         <path d="M7 7C4.79 7 3 8.79 3 11v2c0 2.21 1.79 4 4 4h1.38c.8 0 1.55.38 2.02 1.03l.8 1.08c.4.54 1.2.54 1.6 0l.8-1.08c.47-.65 1.22-1.03 2.02-1.03H17c2.21 0 4-1.79 4-4v-2c0-2.21-1.79-4-4-4H7z"/>
@@ -154,7 +153,7 @@ box-shadow:
 <div class="center-wrap">
   <div class="title">Astral</div>
   <div class="subtitle">brought to you by the creator of quantum arcade</div>
-  <input class="search" placeholder="search the web">
+  <input class="search" id="searchBox" placeholder="search the web">
 </div>
 
 <script>
@@ -194,6 +193,18 @@ requestAnimationFrame(draw);
 window.addEventListener("resize",resize);
 resize();
 draw();
+
+/* SEARCH FUNCTION */
+const searchBox = document.getElementById("searchBox");
+
+searchBox.addEventListener("keydown", function(e){
+  if(e.key === "Enter"){
+    const query = searchBox.value.trim();
+    if(query){
+      window.location.href = "https://duckduckgo.com/?q=" + encodeURIComponent(query);
+    }
+  }
+});
 </script>
 
 </body>
