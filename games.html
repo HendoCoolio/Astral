@@ -104,6 +104,7 @@ object-fit:cover;
 font-size:14px;
 color:white;
 opacity:0.8;
+text-align:center;
 }
 
 /* HOVER */
@@ -125,52 +126,40 @@ border:4px solid #4f8df0;
 
 <div class="grid">
 
-<!-- STICKMAN HOOK -->
 <div class="game" onclick="window.location.href='games/stickman-hook.html'">
-  <div class="icon-box">
-    <img src="icons/stickman hook png.png">
-  </div>
+  <div class="icon-box"><img src="icons/stickman hook png.png"></div>
   <div class="game-name">Stickman Hook</div>
 </div>
 
-<!-- MINECRAFT PE -->
 <div class="game" onclick="window.location.href='games/minecraft-pe.html'">
-  <div class="icon-box">
-    <img src="icons/minecraft pe.png">
-  </div>
+  <div class="icon-box"><img src="icons/minecraft pe.png"></div>
   <div class="game-name">Minecraft PE</div>
 </div>
 
-<!-- REPO -->
 <div class="game" onclick="window.location.href='games/repo.html'">
-  <div class="icon-box">
-    <img src="icons/repo.png">
-  </div>
+  <div class="icon-box"><img src="icons/repo.png"></div>
   <div class="game-name">Repo</div>
 </div>
 
-<!-- GEOMETRY DASH LITE -->
 <div class="game" onclick="window.location.href='games/gd-lite.html'">
-  <div class="icon-box">
-    <img src="icons/gd lite.png">
-  </div>
+  <div class="icon-box"><img src="icons/gd lite.png"></div>
   <div class="game-name">Geometry Dash Lite</div>
 </div>
 
-<!-- BUCKSHOT ROULETTE -->
 <div class="game" onclick="window.location.href='games/buckshot-roulette.html'">
-  <div class="icon-box">
-    <img src="icons/buckshot.png">
-  </div>
+  <div class="icon-box"><img src="icons/buckshot.png"></div>
   <div class="game-name">Buckshot Roulette</div>
 </div>
 
-<!-- SOLAR SMASH -->
 <div class="game" onclick="window.location.href='games/solar-smash.html'">
-  <div class="icon-box">
-    <img src="icons/solar smash.png">
-  </div>
+  <div class="icon-box"><img src="icons/solar smash.png"></div>
   <div class="game-name">Solar Smash</div>
+</div>
+
+<!-- NEW GAME -->
+<div class="game" onclick="window.location.href='games/five-nights-at-epstein.html'">
+  <div class="icon-box"><img src="icons/fnae.webp"></div>
+  <div class="game-name">Five Nights at Epstein</div>
 </div>
 
 </div>
@@ -178,13 +167,11 @@ border:4px solid #4f8df0;
 <script>
 const canvas=document.getElementById("snow");
 const ctx=canvas.getContext("2d");
-
 let w,h,particles=[];
 
 function resize(){
 w=canvas.width=window.innerWidth;
 h=canvas.height=window.innerHeight;
-
 particles=[];
 for(let i=0;i<200;i++){
 particles.push({
@@ -202,22 +189,15 @@ alpha:Math.random()*0.6+0.2
 
 function draw(){
 ctx.clearRect(0,0,w,h);
-
 particles.forEach(p=>{
 p.y+=p.speedY;
 p.x+=Math.sin(p.y*p.swaySpeed+p.offset)*p.sway;
-
-if(p.y>h){
-p.y=-10;
-p.x=Math.random()*w;
-}
-
+if(p.y>h){p.y=-10;p.x=Math.random()*w;}
 ctx.beginPath();
 ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
 ctx.fillStyle=`rgba(255,255,255,${p.alpha})`;
 ctx.fill();
 });
-
 requestAnimationFrame(draw);
 }
 
