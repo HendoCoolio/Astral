@@ -14,7 +14,6 @@ background:#000;
 overflow:hidden;
 }
 
-/* BACKGROUND */
 body{
 background:radial-gradient(circle at center,#020408 0%,#000 70%);
 }
@@ -27,7 +26,6 @@ background:radial-gradient(circle at center,rgba(40,70,140,0.15),transparent 45%
 z-index:0;
 }
 
-/* SNOW */
 canvas{
 position:fixed;
 inset:0;
@@ -35,7 +33,6 @@ z-index:1;
 pointer-events:none;
 }
 
-/* TITLE */
 .title{
 position:absolute;
 top:40px;
@@ -55,23 +52,20 @@ animation:flow 8s ease-in-out infinite;
 50%{background-position:100% 50%}
 }
 
-/* GRID */
 .grid{
 position:absolute;
 top:160px;
 left:0;
 width:100%;
 height:calc(100% - 160px);
-
 display:grid;
 grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
 gap:30px;
-
 padding:30px 40px;
 z-index:2;
+overflow-y:auto;
 }
 
-/* GAME CARD */
 .game{
 display:flex;
 flex-direction:column;
@@ -81,7 +75,6 @@ cursor:pointer;
 transition:0.2s ease;
 }
 
-/* ICON BOX */
 .icon-box{
 width:100%;
 aspect-ratio:1/1;
@@ -92,14 +85,12 @@ border:4px solid transparent;
 transition:0.2s ease;
 }
 
-/* IMAGE */
 .icon-box img{
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
-/* NAME */
 .game-name{
 font-size:14px;
 color:white;
@@ -107,7 +98,6 @@ opacity:0.8;
 text-align:center;
 }
 
-/* HOVER */
 .game:hover{
 transform:translateY(-5px);
 }
@@ -127,39 +117,44 @@ border:4px solid #4f8df0;
 <div class="grid">
 
 <div class="game" onclick="window.location.href='games/stickman-hook.html'">
-  <div class="icon-box"><img src="icons/stickman hook png.png"></div>
-  <div class="game-name">Stickman Hook</div>
+<div class="icon-box"><img src="icons/stickman hook png.png"></div>
+<div class="game-name">Stickman Hook</div>
 </div>
 
 <div class="game" onclick="window.location.href='games/minecraft-pe.html'">
-  <div class="icon-box"><img src="icons/minecraft pe.png"></div>
-  <div class="game-name">Minecraft PE</div>
+<div class="icon-box"><img src="icons/minecraft pe.png"></div>
+<div class="game-name">Minecraft PE</div>
 </div>
 
 <div class="game" onclick="window.location.href='games/repo.html'">
-  <div class="icon-box"><img src="icons/repo.png"></div>
-  <div class="game-name">Repo</div>
+<div class="icon-box"><img src="icons/repo.png"></div>
+<div class="game-name">Repo</div>
 </div>
 
 <div class="game" onclick="window.location.href='games/gd-lite.html'">
-  <div class="icon-box"><img src="icons/gd lite.png"></div>
-  <div class="game-name">Geometry Dash Lite</div>
+<div class="icon-box"><img src="icons/gd lite.png"></div>
+<div class="game-name">Geometry Dash Lite</div>
 </div>
 
 <div class="game" onclick="window.location.href='games/buckshot-roulette.html'">
-  <div class="icon-box"><img src="icons/buckshot.png"></div>
-  <div class="game-name">Buckshot Roulette</div>
+<div class="icon-box"><img src="icons/buckshot.png"></div>
+<div class="game-name">Buckshot Roulette</div>
 </div>
 
 <div class="game" onclick="window.location.href='games/solar-smash.html'">
-  <div class="icon-box"><img src="icons/solar smash.png"></div>
-  <div class="game-name">Solar Smash</div>
+<div class="icon-box"><img src="icons/solar smash.png"></div>
+<div class="game-name">Solar Smash</div>
+</div>
+
+<div class="game" onclick="window.location.href='games/five-nights-at-epstein.html'">
+<div class="icon-box"><img src="icons/fnae.webp"></div>
+<div class="game-name">Five Nights at Epstein</div>
 </div>
 
 <!-- NEW GAME -->
-<div class="game" onclick="window.location.href='games/five-nights-at-epstein.html'">
-  <div class="icon-box"><img src="icons/fnae.webp"></div>
-  <div class="game-name">Five Nights at Epstein</div>
+<div class="game" onclick="window.location.href='games/cluster-rush.html'">
+<div class="icon-box"><img src="icons/cluster-rush-1.png"></div>
+<div class="game-name">Cluster Rush</div>
 </div>
 
 </div>
@@ -167,12 +162,14 @@ border:4px solid #4f8df0;
 <script>
 const canvas=document.getElementById("snow");
 const ctx=canvas.getContext("2d");
+
 let w,h,particles=[];
 
 function resize(){
 w=canvas.width=window.innerWidth;
 h=canvas.height=window.innerHeight;
 particles=[];
+
 for(let i=0;i<200;i++){
 particles.push({
 x:Math.random()*w,
@@ -189,15 +186,22 @@ alpha:Math.random()*0.6+0.2
 
 function draw(){
 ctx.clearRect(0,0,w,h);
+
 particles.forEach(p=>{
 p.y+=p.speedY;
 p.x+=Math.sin(p.y*p.swaySpeed+p.offset)*p.sway;
-if(p.y>h){p.y=-10;p.x=Math.random()*w;}
+
+if(p.y>h){
+p.y=-10;
+p.x=Math.random()*w;
+}
+
 ctx.beginPath();
 ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
 ctx.fillStyle=`rgba(255,255,255,${p.alpha})`;
 ctx.fill();
 });
+
 requestAnimationFrame(draw);
 }
 
