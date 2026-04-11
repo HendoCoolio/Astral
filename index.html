@@ -15,6 +15,7 @@ overflow:hidden;
 background:#000;
 }
 
+/* BACKGROUND */
 body{
 display:flex;
 align-items:center;
@@ -57,6 +58,7 @@ background:rgba(22,22,22,0.92);
 backdrop-filter:blur(8px);
 }
 
+/* ICON BUTTON */
 .top-icon-btn{
 width:42px;
 height:42px;
@@ -67,12 +69,18 @@ display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
+transition:0.18s;
 }
 
 .top-icon-btn svg{
 width:28px;
 height:28px;
 fill:#f2f2f2;
+}
+
+.top-icon-btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 16px rgba(90,150,255,0.25);
 }
 
 /* CENTER */
@@ -109,6 +117,7 @@ color:transparent;
 50%{background-position:100% 50%}
 }
 
+/* SEARCH (UPDATED) */
 .search{
 width:min(600px,80vw);
 padding:15px 20px;
@@ -118,6 +127,53 @@ outline:none;
 background:#121212;
 color:white;
 font-size:16px;
+
+box-shadow:
+0 0 0 2px rgba(60,120,255,0.35),
+0 0 20px rgba(60,120,255,0.25);
+
+transition:0.25s;
+}
+
+.search:focus{
+box-shadow:
+0 0 0 2px rgba(90,150,255,0.6),
+0 0 30px rgba(90,150,255,0.4);
+transform:scale(1.02);
+}
+
+/* BROWSER VIEW */
+#browserWrap{
+position:fixed;
+inset:0;
+background:#000;
+display:none;
+flex-direction:column;
+z-index:10;
+}
+
+#browserTop{
+height:50px;
+background:#111;
+display:flex;
+align-items:center;
+padding:0 10px;
+gap:10px;
+}
+
+#browser{
+flex:1;
+width:100%;
+border:none;
+}
+
+.top-btn{
+padding:8px 14px;
+border:none;
+border-radius:10px;
+background:#121212;
+color:white;
+cursor:pointer;
 }
 </style>
 </head>
@@ -128,11 +184,14 @@ font-size:16px;
 
 <div class="top-bar-wrap">
   <div class="top-bar">
+
+    <!-- CONTROLLER ICON BUTTON -->
     <button class="top-icon-btn" onclick="window.location.href='games.html'">
       <svg viewBox="0 0 24 24">
-        <path d="M7 7C4.79 7 3 8.79 3 11v2c0 2.21 1.79 4 4 4h1.38c.8 0 1.55.38 2.02 1.03l.8 1.08c.4.54 1.2.54 1.6 0l.8-1.08c.47-.65 1.22-1.03 2.02-1.03H17c2.21 0 4-1.79 4-4v-2c0-2.21-1.79-4-4-4H7z"/>
+        <path d="M7 7C4.79 7 3 8.79 3 11v2c0 2.21 1.79 4 4 4h1.38c.8 0 1.55.38 2.02 1.03l.8 1.08c.4.54 1.2.54 1.6 0l.8-1.08c.47-.65 1.22-1.03 2.02-1.03H17c2.21 0 4-1.79 4-4v-2c0-2.21-1.79-4-4-4H7zm2.25 3.25h1.5v1.5h-1.5v1.5h-1.5v-1.5h-1.5v-1.5h1.5v-1.5h1.5v1.5z"/>
       </svg>
     </button>
+
   </div>
 </div>
 
@@ -140,6 +199,13 @@ font-size:16px;
   <div class="title">Astral</div>
   <div class="subtitle">brought to you by the creator of quantum arcade</div>
   <input class="search" id="searchBox" placeholder="search the web">
+</div>
+
+<div id="browserWrap">
+  <div id="browserTop">
+    <button class="top-btn" onclick="goHome()">Home</button>
+  </div>
+  <iframe id="browser"></iframe>
 </div>
 
 <script>
@@ -172,7 +238,7 @@ ctx.clearRect(0,0,w,h);
 
 particles.forEach(p=>{
 p.y+=p.speedY;
-p.x+=Math.sin(p.y*p.swaySpeed + p.offset)*p.sway;
+p.x+=Math.sin(p.y*p.swaySpeed+p.offset)*p.sway;
 
 if(p.y>h){
 p.y=-10;
@@ -193,16 +259,28 @@ resize();
 draw();
 
 /* SEARCH */
-const searchBox = document.getElementById("searchBox");
+const searchBox=document.getElementById("searchBox");
+const browser=document.getElementById("browser");
+const browserWrap=document.getElementById("browserWrap");
+const home=document.getElementById("home");
 
-searchBox.addEventListener("keydown", function(e){
-  if(e.key === "Enter"){
-    const query = searchBox.value.trim();
-    if(query){
-      window.location.href = "https://duckduckgo.com/?q=" + encodeURIComponent(query);
-    }
-  }
+searchBox.addEventListener("keydown",function(e){
+if(e.key==="Enter"){
+const query=searchBox.value.trim();
+if(query){
+home.style.display="none";
+browserWrap.style.display="flex";
+browser.src="https://duckduckgo.com/html/?q="+encodeURIComponent(query);
+}
+}
 });
+
+function goHome(){
+browserWrap.style.display="none";
+home.style.display="flex";
+browser.src="";
+searchBox.value="";
+}
 </script>
 
 </body>
