@@ -52,29 +52,37 @@ animation:flow 8s ease-in-out infinite;
 50%{background-position:100% 50%}
 }
 
+/* GRID FIXED */
 .grid{
 position:absolute;
 top:160px;
 left:0;
 width:100%;
 height:calc(100% - 160px);
+
 display:grid;
+/* forces clean rows */
 grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
-gap:30px;
-padding:30px 40px;
+grid-auto-rows:auto;
+
+gap:20px; /* tighter = no weird spacing */
+
+padding:20px 30px;
 z-index:2;
 overflow-y:auto;
 }
 
+/* GAME CARD */
 .game{
 display:flex;
 flex-direction:column;
 align-items:center;
-gap:10px;
+gap:8px;
 cursor:pointer;
 transition:0.2s ease;
 }
 
+/* ICON */
 .icon-box{
 width:100%;
 aspect-ratio:1/1;
@@ -91,6 +99,7 @@ height:100%;
 object-fit:cover;
 }
 
+/* NAME */
 .game-name{
 font-size:14px;
 color:white;
@@ -98,8 +107,9 @@ opacity:0.8;
 text-align:center;
 }
 
+/* HOVER */
 .game:hover{
-transform:translateY(-5px);
+transform:translateY(-4px);
 }
 
 .game:hover .icon-box{
@@ -166,7 +176,6 @@ border:4px solid #4f8df0;
 <div class="game-name">Slope</div>
 </div>
 
-<!-- NEW GAME -->
 <div class="game" onclick="window.location.href='games/slope2.html'">
 <div class="icon-box"><img src="icons/slope 2.png"></div>
 <div class="game-name">Slope 2</div>
