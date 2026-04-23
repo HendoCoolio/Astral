@@ -52,24 +52,20 @@ animation:flow 8s ease-in-out infinite;
 50%{background-position:100% 50%}
 }
 
-/* GRID FIXED */
+/* GRID WITH FIXED ROWS */
 .grid{
 position:absolute;
 top:160px;
-left:0;
-width:100%;
-height:calc(100% - 160px);
-
+left:50%;
+transform:translateX(-50%);
+width:90%;
 display:grid;
-/* forces clean rows */
-grid-template-columns:repeat(auto-fill, minmax(200px, 1fr));
-grid-auto-rows:auto;
 
-gap:20px; /* tighter = no weird spacing */
+/* 👇 THIS CONTROLS ROWS */
+grid-template-columns:repeat(5, 1fr);
 
-padding:20px 30px;
+gap:20px;
 z-index:2;
-overflow-y:auto;
 }
 
 /* GAME CARD */
@@ -179,6 +175,12 @@ border:4px solid #4f8df0;
 <div class="game" onclick="window.location.href='games/slope2.html'">
 <div class="icon-box"><img src="icons/slope 2.png"></div>
 <div class="game-name">Slope 2</div>
+</div>
+
+<!-- 👇 FIRST GAME OF SECOND ROW (NOW CLEAN) -->
+<div class="game" onclick="window.location.href='games/caraerna.html'">
+<div class="icon-box"><img src="icons/car arena.png"></div>
+<div class="game-name">Car Arena</div>
 </div>
 
 </div>
