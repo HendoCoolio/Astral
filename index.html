@@ -42,7 +42,7 @@ pointer-events:none;
 /* TOP BAR */
 .top-bar-wrap{
 position:fixed;
-top:22px;
+top:25px;
 left:50%;
 transform:translateX(-50%);
 z-index:5;
@@ -50,19 +50,19 @@ z-index:5;
 
 .top-bar{
 display:flex;
-gap:10px;
-padding:8px 10px;
-border-radius:18px;
+gap:12px;
+padding:12px 16px; /* bigger bar */
+border-radius:22px;
 background:rgba(22,22,22,0.92);
-backdrop-filter:blur(8px);
+backdrop-filter:blur(10px);
 }
 
 /* BUTTON */
 .top-icon-btn{
-width:42px;
-height:42px;
+width:60px;   /* bigger button */
+height:60px;
 border:none;
-border-radius:14px;
+border-radius:16px;
 background:transparent;
 display:flex;
 align-items:center;
@@ -70,11 +70,17 @@ justify-content:center;
 cursor:pointer;
 }
 
-/* YOUR IMAGE ICON */
+/* ICON */
 .top-icon-btn img{
-width:28px;
-height:28px;
+width:36px;   /* bigger icon */
+height:36px;
 object-fit:contain;
+transition:0.2s ease;
+}
+
+/* HOVER EFFECT */
+.top-icon-btn:hover img{
+transform:scale(1.2);
 }
 
 /* CENTER */
@@ -164,7 +170,6 @@ cursor:pointer;
 
 <canvas id="snow"></canvas>
 
-<!-- TOP BAR WITH YOUR ICON -->
 <div class="top-bar-wrap">
   <div class="top-bar">
     <button class="top-icon-btn" onclick="window.location.href='games.html'">
