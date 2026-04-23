@@ -57,6 +57,7 @@ background:rgba(22,22,22,0.92);
 backdrop-filter:blur(8px);
 }
 
+/* BUTTON */
 .top-icon-btn{
 width:42px;
 height:42px;
@@ -69,10 +70,11 @@ justify-content:center;
 cursor:pointer;
 }
 
-.top-icon-btn svg{
+/* YOUR IMAGE ICON */
+.top-icon-btn img{
 width:28px;
 height:28px;
-fill:#f2f2f2;
+object-fit:contain;
 }
 
 /* CENTER */
@@ -162,12 +164,11 @@ cursor:pointer;
 
 <canvas id="snow"></canvas>
 
+<!-- TOP BAR WITH YOUR ICON -->
 <div class="top-bar-wrap">
   <div class="top-bar">
     <button class="top-icon-btn" onclick="window.location.href='games.html'">
-      <svg viewBox="0 0 24 24">
-        <path d="M7 7C4.79 7 3 8.79 3 11v2c0 2.21 1.79 4 4 4h1.38c.8 0 1.55.38 2.02 1.03l.8 1.08c.4.54 1.2.54 1.6 0l.8-1.08c.47-.65 1.22-1.03 2.02-1.03H17c2.21 0 4-1.79 4-4v-2c0-2.21-1.79-4-4-4H7z"/>
-      </svg>
+      <img src="icons/games icon.png">
     </button>
   </div>
 </div>
@@ -227,7 +228,6 @@ window.addEventListener("resize",resize);
 resize();
 draw();
 
-/* SEARCH (WORKING VERSION) */
 const searchBox=document.getElementById("searchBox");
 const browser=document.getElementById("browser");
 const browserWrap=document.getElementById("browserWrap");
@@ -239,8 +239,6 @@ const query=searchBox.value.trim();
 if(query){
 home.style.display="none";
 browserWrap.style.display="flex";
-
-/* WORKING VERSION */
 browser.src="https://html.duckduckgo.com/html/?q="+encodeURIComponent(query);
 }
 }
