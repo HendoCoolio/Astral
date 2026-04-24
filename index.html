@@ -39,31 +39,31 @@ z-index:1;
 pointer-events:none;
 }
 
-/* 🔥 FULL WIDTH BAR */
+/* 🔥 SUBTLE BAR */
 .bottom-bar{
 position:fixed;
 bottom:0;
 left:0;
 width:100%;
-height:80px;
+height:60px; /* shorter */
 
 display:flex;
 align-items:center;
 justify-content:center;
 gap:20px;
 
-background:rgba(20,20,20,0.95);
-backdrop-filter:blur(10px);
+background:rgba(15,15,15,0.7); /* more transparent */
+backdrop-filter:blur(6px); /* softer blur */
 
 z-index:5;
 }
 
 /* ICON BUTTON */
 .bar-btn{
-width:60px;
-height:60px;
+width:50px;
+height:50px;
 border:none;
-border-radius:16px;
+border-radius:14px;
 background:transparent;
 display:flex;
 align-items:center;
@@ -72,15 +72,15 @@ cursor:pointer;
 }
 
 .bar-btn img{
-width:38px;
-height:38px;
+width:32px;
+height:32px;
 object-fit:contain;
 transition:0.2s ease;
 }
 
 /* HOVER */
 .bar-btn:hover img{
-transform:scale(1.25);
+transform:scale(1.2);
 }
 
 /* CENTER */
@@ -170,7 +170,6 @@ cursor:pointer;
 
 <canvas id="snow"></canvas>
 
-<!-- 🔥 FULL WIDTH BAR -->
 <div class="bottom-bar">
   <button class="bar-btn" onclick="window.location.href='games.html'">
     <img src="icons/games icon.png">
