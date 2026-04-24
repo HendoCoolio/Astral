@@ -39,26 +39,26 @@ z-index:1;
 pointer-events:none;
 }
 
-/* 🔥 SUBTLE BAR */
+/* BAR */
 .bottom-bar{
 position:fixed;
 bottom:0;
 left:0;
 width:100%;
-height:60px; /* shorter */
+height:60px;
 
 display:flex;
 align-items:center;
 justify-content:center;
 gap:20px;
 
-background:rgba(15,15,15,0.7); /* more transparent */
-backdrop-filter:blur(6px); /* softer blur */
+background:rgba(15,15,15,0.7);
+backdrop-filter:blur(6px);
 
 z-index:5;
 }
 
-/* ICON BUTTON */
+/* BUTTON */
 .bar-btn{
 width:50px;
 height:50px;
@@ -72,8 +72,8 @@ cursor:pointer;
 }
 
 .bar-btn img{
-width:32px;
-height:32px;
+width:30px;
+height:30px;
 object-fit:contain;
 transition:0.2s ease;
 }
@@ -170,10 +170,19 @@ cursor:pointer;
 
 <canvas id="snow"></canvas>
 
+<!-- 🔥 BAR WITH 2 ICONS -->
 <div class="bottom-bar">
+
+  <!-- HOME BUTTON -->
+  <button class="bar-btn" onclick="window.location.href='index.html'">
+    <img src="icons/home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png">
+  </button>
+
+  <!-- GAMES BUTTON -->
   <button class="bar-btn" onclick="window.location.href='games.html'">
     <img src="icons/games icon.png">
   </button>
+
 </div>
 
 <div class="center-wrap" id="home">
