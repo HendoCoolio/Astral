@@ -52,7 +52,6 @@ animation:flow 8s ease-in-out infinite;
 50%{background-position:100% 50%}
 }
 
-/* GRID */
 .grid{
 position:absolute;
 top:160px;
@@ -62,12 +61,10 @@ width:95%;
 
 display:grid;
 grid-template-columns:repeat(10, 1fr);
-
 gap:20px;
 z-index:2;
 }
 
-/* GAME CARD */
 .game{
 display:flex;
 flex-direction:column;
@@ -179,10 +176,15 @@ border:4px solid #4f8df0;
 <div class="game-name">Car Arena</div>
 </div>
 
-<!-- ✅ NEW GAME -->
 <div class="game" onclick="window.location.href='games/getting over it.html'">
 <div class="icon-box"><img src="icons/getting over it.png"></div>
 <div class="game-name">Getting Over It</div>
+</div>
+
+<!-- ✅ NEW GAME -->
+<div class="game" onclick="window.location.href='games/doom.html'">
+<div class="icon-box"><img src="icons/Doom.webp"></div>
+<div class="game-name">Doom</div>
 </div>
 
 </div>
